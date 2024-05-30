@@ -1,0 +1,93 @@
+$primary-color: #FBBA30;
+$secondary-color: #E84033;
+$success-color: #45AC34;
+$background-color: #fff;
+$text-color: #000;
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: $background-color;
+  color: $text-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-container {
+  text-align: center;
+  //width: 80%;
+  //margin: auto;
+}
+
+.header {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.tree-container {
+  border: 1px solid $primary-color;
+  padding: 20px;
+  background-color: $background-color;
+  display: inline-block;
+  text-align: left;
+  width: 80%;
+}
+
+.tree-node {
+  margin-left: 20px;
+}
+
+button {
+  margin: 5px;
+  padding: 3px 10px;
+  border: none;
+  cursor: pointer;
+  color: $background-color;
+  background-color: $primary-color;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+
+  &.edit {
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+
+  &.remove {
+    background-color: $secondary-color;
+
+    &:hover {
+      background-color: darken($secondary-color, 10%);
+    }
+  }
+
+  &.add {
+    background-color: $success-color;
+
+    &:hover {
+      background-color: darken($success-color, 10%);
+    }
+  }
+
+  &.reset {
+    background-color: $primary-color;
+    margin-top: 20px;
+    padding: 10px 10px;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+}
+
+input {
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid $primary-color;
+}

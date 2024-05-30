@@ -2,38 +2,59 @@ import React, { useState } from 'react';
 import TreeNode from './treeNode';
 
 const fullCopy = (obj) => {
-    if (obj === null || typeof obj !== 'object') {
+    if (obj === null || typeof obj !== 'object')
         return obj;
-    }
-    if (Array.isArray(obj)) {
+    if (Array.isArray(obj))
         return obj.map(fullCopy);
-    }
     const copiedObj = {};
-    for (let key in obj) {
-        if (obj.hasOwnProperty(key)) {
+
+    for (let key in obj) 
+    {
+        if (obj.hasOwnProperty(key))
             copiedObj[key] = fullCopy(obj[key]);
-        }
     }
     return copiedObj;
+};
+
+const calculateInitialCounter = (tree, count) => {
+    count++;
+    for (let child of tree.children) 
+    {
+        count = calculateInitialCounter(child, count);
+    }
+    return count;
 };
 
 const initialTree = {
     id: 1,
     name: 'Node 1',
-    children: [],
+    children: [
+        {
+        id: 2,
+        name: 'Node 2',
+        children: [
+            { id: 3, name: 'Node 3', children: [] },
+            { id: 5, name: 'Node 5', children: [] },
+        ],
+        },
+        { id: 4, name: 'Node 4', children: [] },
+    ],
 };
-const initialCounter = 2;
+const initialCounter = calculateInitialCounter(initialTree, 2);
 
 const Tree = () => {
     const [tree, setTree] = useState(fullCopy(initialTree));
     const [idCounter, setIdCounter] = useState(initialCounter);
 
     const findNode = (id, node) => {
-        if (node.id === id) return node;
+        if (node.id === id)
+             return node;
 
-        for (let child of node.children) {
+        for (let child of node.children) 
+        {
             const result = findNode(id, child);
-            if (result) return result;
+            if (result)
+                return result;
         }
 
         return null;
@@ -77,14 +98,14 @@ const Tree = () => {
     const getTree = () => {
         console.log(tree);
         console.log(idCounter);
-        console.log("initial data", initialTree, initialCounter);
+        console.log('initial data', initialTree, initialCounter);
     };
 
     return (
         <div>
             <TreeNode node={tree} onAdd={addNode} onRemove={removeNode} onEdit={editNode} />
-            <button onClick={resetTree}>Reset</button>
-            <button onClick={getTree}>Data</button>
+            <button className="reset" onClick={resetTree}>Reset</button>
+            <button className="reset" onClick={getTree}>Data</button>
         </div>
     );
 };
