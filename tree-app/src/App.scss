@@ -17,8 +17,8 @@ body, html {
 
 .app-container {
   text-align: center;
-  //width: 80%;
-  //margin: auto;
+  max-width: 1200px;
+  padding: 20px;
 }
 
 .header {
@@ -32,11 +32,13 @@ body, html {
   background-color: $background-color;
   display: inline-block;
   text-align: left;
-  width: 80%;
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .tree-node {
   margin-left: 20px;
+  white-space: nowrap;
 }
 
 button {
@@ -53,7 +55,6 @@ button {
   }
 
   &.edit {
-
     &:hover {
       background-color: darken($primary-color, 10%);
     }
@@ -90,4 +91,53 @@ input {
   margin: 5px;
   padding: 5px;
   border: 1px solid $primary-color;
+}
+
+@media (max-width: 768px) {
+  .header {
+    font-size: 1.5em;
+  }
+
+  .tree-node {
+    margin-left: 10px;
+  }
+
+  button {
+    margin: 3px;
+    padding: 2px 5px;
+  }
+
+  .tree-container {
+    padding: 10px;
+  }
+
+  .app-container {
+    width: 95%;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    font-size: 1.2em;
+  }
+
+  .tree-node {
+    margin-left: 5px;
+  }
+
+  button {
+    margin: 2px;
+    padding: 1px 3px;
+    font-size: 0.8em;
+  }
+
+  .tree-container {
+    padding: 5px;
+  }
+
+  .app-container {
+    width: 100%;
+    padding: 5px;
+  }
 }
